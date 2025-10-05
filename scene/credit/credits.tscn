@@ -25,6 +25,7 @@ layout_mode = 2
 text = "Réalisé par 4Chette et Dragonhail"
 
 [node name="Label2" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Foley Artist : Dragonhail"
 
@@ -34,7 +35,7 @@ text = "Dessin : Claire André"
 
 [node name="Label5" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Music : raphaël Le Marchand"
+text = "Music : Raphaël Le Marchand"
 
 [node name="Label4" type="Label" parent="VBoxContainer"]
 layout_mode = 2

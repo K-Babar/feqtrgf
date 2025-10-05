@@ -39,6 +39,8 @@ offset_left = 562.0
 offset_top = 304.0
 offset_right = 643.0
 offset_bottom = 353.0
+theme_override_fonts/font = ExtResource("3_8vtwa")
+theme_override_font_sizes/font_size = 27
 text = "Start"
 metadata/_edit_use_anchors_ = true
 
@@ -47,6 +49,8 @@ offset_left = 1126.0
 offset_top = 541.0
 offset_right = 1187.0
 offset_bottom = 587.0
+theme_override_fonts/font = ExtResource("3_8vtwa")
+theme_override_font_sizes/font_size = 21
 text = "Credit"
 
 [node name="LogoJam" type="Sprite2D" parent="CanvasLayer"]
