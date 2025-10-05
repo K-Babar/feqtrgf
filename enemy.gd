@@ -1,15 +1,15 @@
 extends FollowerSmarter
 
+@export var damage_amount2: int = 15  # ← Ajoute cette ligne, valeur par défaut
+
 var is_mouse_on = false
 @onready var anim_enemy: AnimatedSprite2D = $AnimatedSprite2DEnemy
+
+var order = Global.attack_order
 func _ready() -> void:
-	
 	super._ready()
-	# On cache l'ancien sprite hérité
-	$AnimatedSprite2D2.visible = false
-	# On démarre l'animation par défaut
-	anim_enemy.play("idle")
-	
+	$AnimatedSprite2D2.play("default")
+
 	# Connexion pour sélection manuelle
 	$ChatDetection.connect("input_event", Callable(self, "_on_chat_detection_input_event"))
 
@@ -35,6 +35,15 @@ func _physics_process(delta: float) -> void:
 		#select_target()
 		#return
 	select_target()
+
+	order = Global.attack_order
+	if is_mouse_on && order:
+		
+		var groups = get_groups()
+		print("Node", name, "appartient aux groupes :")
+		for g in groups:
+			print(" -", g)
+		add_to_group("TargetEnemy")
 
 	# Déplacement vers la cible
 	if target and is_following:
@@ -65,24 +74,27 @@ func _physics_process(delta: float) -> void:
 
 # --- Sélection d'une cible ---
 func select_target() -> void:
+
 	var allies = get_tree().get_nodes_in_group("Ally")
 	var players = get_tree().get_nodes_in_group("Player")
 	
 	# S'assure qu'on ne se choisit pas soi-même
 	allies = allies.filter(func(a): return a != self)
-	print("YOu were here")
-	if allies.size() > 0:
+	allies = allies.filter(func(a): return !a.is_ko)
+	if allies.size() > 0 :
+
 		# Choisit un Ally aléatoire en priorité
 		target = allies[0]
-		print(target.get_groups())
-		print(name, " attaque en priorité :  ", target.name, "(Ally)")
+		#print(target.get_groups())
+		#print(name, " attaque en priorité :  ", target.name, "(Ally)")
 	elif players.size() > 0:
+
 		# Si aucun Ally, alors vise Player
 		target = players[randi() % players.size()] # ← au cas où plusieurs players
-		print(name, "attaque par défaut :", target.name, "(Player)")
+		#print(name, " attaque par défaut :", target.name, "(Player)")
 	else:
 		target = null
-		print(name, "n’a trouvé aucune cible.")
+		#print(name, "n’a trouvé aucune cible.")
 
 
 
@@ -92,7 +104,7 @@ func _on_proximity_too_close_body_entered(body: Node2D) -> void:
 		is_following = false
 		target_in_range = body
 		$DamageTimer.start()
-		print(name, "attaque", body.name)
+		#print(name, "attaque", body.name)
 
 
 # --- Quand un corps sort de la zone ---
@@ -107,13 +119,13 @@ func _on_proximity_too_close_body_exited(body: Node2D) -> void:
 # --- Application des dégâts ---
 func _on_damage_timer_timeout() -> void:
 	if target_in_range and target_in_range.has_method("take_damage"):
-		target_in_range.take_damage(damage_amount)
-		print(name, "inflige", damage_amount, "dégâts à", target_in_range.name)
+		target_in_range.take_damage(damage_amount2)
+		#print(name, "inflige", damage_amount2, "dégâts à", target_in_range.name)
 
 
 func take_damage(damage: int) -> void:
 	Health -= damage
-	print(name, "a pris", damage, "dégâts. Santé restante :", Health)
+	#print(name, "a pris", damage, "dégâts. Santé restante :", Health)
 	if Health <= 0:
 		kill()
 
@@ -126,7 +138,10 @@ func kill():
 func _on_chat_detection_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var player_node = get_tree().get_first_node_in_group("Player")
+		print('tuez moi')
 		if player_node and player_node.get("attaque_order"):
+			print('caca')
+
 			if not is_in_group("target"):
 				add_to_group("target")
 				print(name, "ajouté au groupe target !")
@@ -137,10 +152,9 @@ func _on_targetable_area_mouse_entered() -> void:
 
 
 func _on_targetable_area_mouse_exited() -> void:
+	
+
 	is_mouse_on = false
-
-
-# --- Redéfinition des animations (utilise AnimatedSprite2DEnemy) ---
 func _play_walk_animation(direction: Vector2) -> void:
 	if abs(direction.x) > abs(direction.y):
 		if direction.x > 0:
@@ -155,3 +169,7 @@ func _play_walk_animation(direction: Vector2) -> void:
 
 func _play_idle_animation(direction: Vector2) -> void:
 	anim_enemy.play("idle")
+
+
+func _on_chat_detection_mouse_entered() -> void:
+	pass # Replace with function body.

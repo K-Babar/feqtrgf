@@ -225,6 +225,12 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_mk38w")
 
+[node name="ResTimer" type="Timer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
 [connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
 [connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
