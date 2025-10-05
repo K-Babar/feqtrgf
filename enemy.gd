@@ -36,7 +36,6 @@ func _physics_process(delta: float) -> void:
 		#select_target()
 		#return
 	select_target()
-
 	order = Global.attack_order
 	if is_mouse_on && order:
 		
@@ -115,6 +114,7 @@ func _on_proximity_too_close_body_exited(body: Node2D) -> void:
 		is_following = true
 		$AnimatedSprite2D2.play("default")
 		$DamageTimer.stop()
+
 
 
 # --- Application des dégâts ---
