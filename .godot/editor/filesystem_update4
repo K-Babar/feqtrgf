@@ -1,2 +1,7 @@
-res://scene/levels/title/title_scene.tscn
+res://followersmarter.tscn
+res://follower_smarter.gd
+res://enemy.tscn
 res://enemy.gd
+res://scene/levels/crypt/crypt.tscn
+res://scene/character/player/player.tscn
+res://scene/character/player/player.gd
