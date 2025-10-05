@@ -35,7 +35,6 @@ func _physics_process(delta: float) -> void:
 		#select_target()
 		#return
 	select_target()
-
 	order = Global.attack_order
 	if is_mouse_on && order:
 		

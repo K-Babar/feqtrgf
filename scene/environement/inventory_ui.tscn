@@ -37,15 +37,23 @@ theme_override_font_sizes/font_size = 20
 text = "Drop"
 
 [node name="ButtonUse" type="Panel" parent="."]
-offset_left = 1160.0
-offset_top = 558.0
-offset_right = 1200.0
-offset_bottom = 598.0
+offset_left = 1151.0
+offset_top = 550.0
+offset_right = 1191.0
+offset_bottom = 590.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonUse"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -36.0
+offset_top = -2.0
+offset_right = 42.0
+offset_bottom = 28.0
+
+[node name="Label" type="Label" parent="ButtonUse/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rsfft")
+theme_override_font_sizes/font_size = 20
+text = " "
 
 [connection signal="pressed" from="ContextMenu/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ContextMenu/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

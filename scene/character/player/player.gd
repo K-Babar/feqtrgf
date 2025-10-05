@@ -5,7 +5,7 @@ signal command_attack
 var screen_size # Size of the game window.
 @export var  Health = 100
 var can_move = true
-var attack_order = false
+var order = false
 func _ready():
 	screen_size = get_viewport_rect().size #get the size of my screen bc the tuto said so
 
@@ -14,11 +14,12 @@ func _ready():
 
 #code that i stole from the tutorial and changed
 func _process(delta):
-	Global.attack_order = self.attack_order
+	#Global.attack_order = self.order
 	if Input.is_action_just_pressed("attack_order"):
-		attack_order = true
+		order = true
+		Global.attack_order = true
 	if Input.is_action_just_released("attack_order"):
-		attack_order = false		
+		order = false
 	velocity = Vector2.ZERO # The player's movement vector.
 	move_and_slide()
 	if can_move:
