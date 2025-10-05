@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TheSereneGlade"
-run/main_scene="uid://7q4tqo0mblic"
+run/main_scene="uid://bdg4tsa7gd0di"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://scene/icon.svg"
 

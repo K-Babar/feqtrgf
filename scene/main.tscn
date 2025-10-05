@@ -706,6 +706,8 @@ top_level = true
 position = Vector2(608, 479)
 
 [node name="Npc" parent="." instance=ExtResource("19_0vlqb")]
-position = Vector2(453, 545)
+top_level = true
+position = Vector2(506, 545)
+dialogue_file = "res://dialogue/Gravekeeper_dialogue.json"
 
 [connection signal="body_entered" from="porteCript" to="porteCript" method="_on_body_entered"]

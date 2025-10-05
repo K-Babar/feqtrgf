@@ -1,17 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdg4tsa7gd0di"]
+[gd_scene load_steps=6 format=3 uid="uid://bdg4tsa7gd0di"]
 
 [ext_resource type="Script" uid="uid://bqvy7ocmdgtp8" path="res://scene/levels/title/title_scene.gd" id="1_wkkv4"]
 [ext_resource type="Texture2D" uid="uid://c01rh8y55tkcy" path="res://ART/Props/BG/sprite_0.png" id="2_176dl"]
 [ext_resource type="FontFile" uid="uid://ba8xjii1dt2kh" path="res://ART/DialogBox/Font/Grenze_Gotisch/GrenzeGotisch-VariableFont_wght.ttf" id="3_8vtwa"]
 [ext_resource type="Texture2D" uid="uid://eyt0sj8du4mb" path="res://ART/Props/Logo/JamLogo.png" id="4_38qgr"]
+[ext_resource type="Texture2D" uid="uid://bdthvbf5acmfk" path="res://ART/Props/Logo/sprite_0.png" id="5_iib71"]
 
 [node name="TitleScene" type="Node2D"]
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_wkkv4")
 
 [node name="Sprite0" type="Sprite2D" parent="."]
-position = Vector2(59800008, 35400000)
-scale = Vector2(99798.9, 118833.35)
+position = Vector2(59960336, 35400000)
+scale = Vector2(100066.125, 118833.35)
 texture = ExtResource("2_176dl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -45,10 +46,10 @@ text = "Start"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button2" type="Button" parent="CanvasLayer"]
-offset_left = 1126.0
-offset_top = 541.0
-offset_right = 1187.0
-offset_bottom = 587.0
+offset_left = 1133.0
+offset_top = 549.0
+offset_right = 1194.0
+offset_bottom = 595.0
 theme_override_fonts/font = ExtResource("3_8vtwa")
 theme_override_font_sizes/font_size = 21
 text = "Credit"
@@ -57,6 +58,11 @@ text = "Credit"
 position = Vector2(945.00006, 219.00002)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("4_38qgr")
+
+[node name="Sprite1" type="Sprite2D" parent="."]
+position = Vector2(5500000.5, 54100004)
+scale = Vector2(108000.5, 110000.5)
+texture = ExtResource("5_iib71")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
