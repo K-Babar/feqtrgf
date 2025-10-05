@@ -30,6 +30,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+
 	# Si pas de cible valide -> en choisir une
 	#if not is_instance_valid(target):
 		#select_target()

@@ -6,7 +6,7 @@ var target_in_range: Node2D = null
 @export var speed2 := 100
 @export var Health := 50
 @export var restime := 15
-
+@export var true_damage_amount :=15
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var res_timer: Timer = $ResTimer
@@ -17,7 +17,7 @@ var target: Node2D = null
 var last_direction := Vector2.ZERO
 var idle := false
 var is_ko := false
-
+var damage_amount = 0
 var attack_mode := false   # true si le follower doit attaquer un ennemi
 
 func _ready() -> void:
@@ -48,19 +48,23 @@ func _process(delta: float) -> void:
 			_play_idle_animation(last_direction)
 
 func _physics_process(delta):
+	
 	var Enemie = get_tree().get_nodes_in_group("TargetEnemy")
 	if Enemie == []:
-		attack_mode =false
+
+		set_attack_mode(false)
 	else: 
-		attack_mode =true
+		set_attack_mode(true)
 	if not is_ko and target and is_following:
 		if not is_instance_valid(target):
 			targeting()
 			return
 
+
 		var target_pos = target.global_position
 		if nav_agent.target_position != target_pos:
 			nav_agent.target_position = target_pos
+
 
 		if nav_agent.is_navigation_finished() or global_position.distance_to(target_pos) < follow_distance:
 			velocity = Vector2.ZERO
@@ -78,18 +82,22 @@ func _physics_process(delta):
 # --- Gestion du ciblage ---
 func targeting():
 	if attack_mode:
+		damage_amount = true_damage_amount
+		is_following = false
 		# Mode attaque → chercher uniquement les ennemis
 		var enemies = get_tree().get_nodes_in_group("TargetEnemy")
 		if enemies.size() > 0:
-			print('here')
 			target = enemies[0]
 			is_following = true
 		else:
 			target = null
+			
 	else:
 		# Mode normal → suivre le joueur
 		var players = get_tree().get_nodes_in_group("Player")
+		is_following = true
 		if players.size() > 0:
+			damage_amount = 0
 			player = players[0]
 			target = player
 			is_following = true
@@ -141,8 +149,8 @@ func _on_proximity_too_close_body_entered(body: Node2D) -> void:
 		is_following = false
 		target = body
 		_update_attack_orientation()
-		if attack_sprite.has_animation("attack"):
-			attack_sprite.play("attack")
+		#if attack_sprite.has_animation("attack"):
+			#attack_sprite.play("attack")
 
 
 func _on_chat_detection_body_exited(body: Node2D) -> void:
@@ -187,3 +195,24 @@ func take_damage(damage: int):
 func set_attack_mode(state: bool) -> void:
 	attack_mode = state
 	targeting()
+
+func _on_damage_timer_timeout() -> void:
+	print('caca')
+	if target_in_range and target_in_range.has_method("take_damage"):
+		target_in_range.take_damage(damage_amount)
+
+
+func _on_attack_range_body_entered(body: Node2D) -> void:
+	
+	if body == target:
+		is_following = false
+		target_in_range = body
+		$DamageTimer.start()
+		print(name, "attaque", body.name)
+		
+func _on_attack_range_body_exited(body: Node2D) -> void:
+	if body == target_in_range:
+		target_in_range = null
+		is_following = true
+		$AnimatedSprite2D2.play("default")
+		$DamageTimer.stop()

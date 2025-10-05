@@ -5,3 +5,9 @@ res://enemy.gd
 res://scene/levels/crypt/crypt.tscn
 res://scene/character/player/player.tscn
 res://scene/character/player/player.gd
+res://scene/levels/title/title_scene.tscn
+res://scene/character/npc/follower.gd
+res://scene/main.tscn
+res://scene/character/npc/npc.tscn
+res://scene/character/npc/npc.gd
+res://scene/dialogue/dialogue.gd

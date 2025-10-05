@@ -58,6 +58,7 @@ _data = {
 vertices = PackedVector2Array(932.28125, 81.28125, 943.7031, 477.95313, 755.65625, 293.46875, 752.7031, 282, 747.4531, 261.2422, 745.6406, 253.3125, 752.0469, 282, 740.3125, 237.27344, 625.6719, 330, 642.65625, 324.17188, 657.72656, 320.95313, 662, 320.3828, 662, 322.53906, 274.64063, 475.03906, 727.21875, 238.85156, 727.21875, 230, 727.3281, 214, 550, 290.28906, 572.7422, 290.03125, 572.1719, 298, 727.14844, 230, 502, 290.28906, 518, 290.10938, 518, 290.28906, 534, 290.10938, 534, 290.28906, 550, 290.10938, 618, 330.1328, 618, 330, 575.10156, 298, 576.71875, 305.97656, 714, 306.42188, 714, 305.9922, 728.2969, 302.1328, 698, 312.8203, 698, 311.3672, 261.34375, 100.703125, 502, 214, 746.1406, 295.79688, 738.9922, 304.03125, 733.7578, 302.0703, 580.39844, 328.1328, 582, 329.20313, 582, 336.5078, 577.7969, 312.03125, 602.96875, 334.45313)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(2, 6, 3), PackedInt32Array(0, 5, 7), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(0, 7, 14, 15, 16), PackedInt32Array(17, 18, 19), PackedInt32Array(15, 20, 16), PackedInt32Array(21, 22, 23, 13), PackedInt32Array(23, 24, 25), PackedInt32Array(25, 26, 17), PackedInt32Array(27, 28, 8), PackedInt32Array(19, 29, 30), PackedInt32Array(31, 32, 33), PackedInt32Array(34, 35, 31, 33), PackedInt32Array(36, 0, 16, 37), PackedInt32Array(13, 36, 37, 21), PackedInt32Array(38, 2, 1, 39), PackedInt32Array(33, 40, 39, 1, 13, 34), PackedInt32Array(41, 42, 43), PackedInt32Array(17, 19, 30, 44, 41, 25), PackedInt32Array(23, 25, 41, 43, 13), PackedInt32Array(13, 43, 45), PackedInt32Array(45, 27, 8, 13), PackedInt32Array(13, 12, 34)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(251, 91, 942, 71, 954, 488, 265, 485)])
+parsed_geometry_type = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tt6x2"]
 texture = ExtResource("2_0up7y")
@@ -1029,7 +1030,7 @@ shape = SubResource("RectangleShape2D_j5ywv")
 position = Vector2(720, 329)
 
 [node name="Follower" parent="." instance=ExtResource("11_tt6x2")]
-position = Vector2(699, 437)
+position = Vector2(720, 455)
 
 [node name="Follower2" parent="." instance=ExtResource("11_tt6x2")]
 position = Vector2(837, 428)

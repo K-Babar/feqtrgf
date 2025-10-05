@@ -11,7 +11,7 @@ var current_state = IDLE
 
 var dir = Vector2.RIGHT
 var start_pos
-
+@export_file("*.json") var dialogue_file
 var is_roaming = true 
 var is_chatting = false
 var is_following = false

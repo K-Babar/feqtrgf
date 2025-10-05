@@ -24,7 +24,11 @@ func start():
 
 #on extrait le dialogue qui provient du fichier dialogue.json 
 func load_dialogue():
-	var file = FileAccess.open(d_file, FileAccess.READ)
+	var file_path = get_parent().dialogue_file
+	if file_path == null or file_path == "":
+		push_warning("Aucun fichier de dialogue assigné à ce NPC")
+		return []
+	var file = FileAccess.open(file_path, FileAccess.READ)
 	var content = JSON.parse_string(file.get_as_text())
 	return content
 	
