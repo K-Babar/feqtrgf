@@ -104,11 +104,11 @@ func _on_proximity_too_close_body_exited(body: Node2D) -> void:
 		$DamageTimer.stop()
 
 
-# --- Application des dégâts ---
-func _on_damage_timer_timeout() -> void:
-	if target_in_range and target_in_range.has_method("take_damage"):
-		target_in_range.take_damage(damage_amount)
-		print(name, "inflige", damage_amount, "dégâts à", target_in_range.name)
+## --- Application des dégâts ---
+#func _on_damage_timer_timeout() -> void:
+	#if target_in_range and target_in_range.has_method("take_damage"):
+		#target_in_range.take_damage(damage_amount)
+		#print(name, "inflige", damage_amount, "dégâts à", target_in_range.name)
 
 
 func take_damage(damage: int) -> void:

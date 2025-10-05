@@ -5,13 +5,19 @@ extends CanvasLayer
 var selected_item: String = ""
 var is_open = false
 
+@onready var button_use = $ButtonUse/VBoxContainer
+ 
+
 func _ready():
 	hide()
 	context_menu.hide()
+	button_use.hide()
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_inventory"):
 		toggle_inventory()
+	if Global.attack_order:
+		toggle_order_attaque()
 
 func toggle_inventory():
 	is_open = !is_open
@@ -58,3 +64,8 @@ func _on_button_pressed():
 
 func _on_button_2_pressed():
 	InventoryUi._on_drop_pressed()
+	
+
+func toggle_order_attaque():
+	var button = Button.new()
+	button.text = "attaque1"

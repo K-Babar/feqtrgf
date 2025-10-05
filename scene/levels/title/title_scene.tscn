@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdg4tsa7gd0di"]
+[gd_scene load_steps=5 format=3 uid="uid://bdg4tsa7gd0di"]
 
 [ext_resource type="Script" uid="uid://bqvy7ocmdgtp8" path="res://scene/levels/title/title_scene.gd" id="1_wkkv4"]
 [ext_resource type="Texture2D" uid="uid://c01rh8y55tkcy" path="res://ART/Props/BG/sprite_0.png" id="2_176dl"]
 [ext_resource type="FontFile" uid="uid://ba8xjii1dt2kh" path="res://ART/DialogBox/Font/Grenze_Gotisch/GrenzeGotisch-VariableFont_wght.ttf" id="3_8vtwa"]
+[ext_resource type="Texture2D" uid="uid://eyt0sj8du4mb" path="res://ART/Props/Logo/JamLogo.png" id="4_38qgr"]
 
 [node name="TitleScene" type="Node2D"]
 scale = Vector2(1e-05, 1e-05)
@@ -47,6 +48,11 @@ offset_top = 541.0
 offset_right = 1187.0
 offset_bottom = 587.0
 text = "Credit"
+
+[node name="LogoJam" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(945.00006, 219.00002)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_38qgr")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]

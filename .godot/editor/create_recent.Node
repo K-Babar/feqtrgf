@@ -1,3 +1,6 @@
+VBoxContainer
+Panel
+Sprite2D
 Timer
 RichTextLabel
 AnimatedSprite2D

@@ -1,2 +1,5 @@
 res://scene/levels/title/title_scene.tscn
 res://enemy.gd
+res://scene/environement/inventory_ui.tscn
+res://scene/environement/inventory_ui.gd
+res://scene/levels/crypt/crypt.tscn
