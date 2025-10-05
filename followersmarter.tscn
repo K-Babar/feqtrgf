@@ -169,7 +169,7 @@ radius = 64.412735
 [sub_resource type="CircleShape2D" id="CircleShape2D_mk38w"]
 radius = 24.0
 
-[node name="Follower" type="CharacterBody2D"]
+[node name="Follower" type="CharacterBody2D" groups=["Ally"]]
 position = Vector2(129, 31)
 script = ExtResource("1_mk38w")
 

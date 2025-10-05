@@ -1028,7 +1028,13 @@ shape = SubResource("RectangleShape2D_j5ywv")
 [node name="Enemy" parent="." instance=ExtResource("10_xixhc")]
 position = Vector2(720, 329)
 
-[node name="Follower" parent="." groups=["Ally"] instance=ExtResource("11_tt6x2")]
-position = Vector2(826, 457)
+[node name="Follower" parent="." instance=ExtResource("11_tt6x2")]
+position = Vector2(699, 437)
+
+[node name="Follower2" parent="." instance=ExtResource("11_tt6x2")]
+position = Vector2(837, 428)
+
+[node name="Follower3" parent="." instance=ExtResource("11_tt6x2")]
+position = Vector2(641, 381)
 
 [connection signal="body_entered" from="OutputPort" to="OutputPort" method="_on_body_entered"]
