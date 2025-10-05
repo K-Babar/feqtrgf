@@ -1,0 +1,128 @@
+[gd_scene load_steps=19 format=3 uid="uid://7q4tqo0mblic"]
+
+[ext_resource type="Script" uid="uid://bcr5sryin7daw" path="res://scene/character/player/player.gd" id="1_urp6f"]
+[ext_resource type="Texture2D" uid="uid://bumrti78qb6ck" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_00.png" id="2_bwjto"]
+[ext_resource type="Texture2D" uid="uid://byr1mq38prmlq" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_01.png" id="3_606se"]
+[ext_resource type="Texture2D" uid="uid://qp71lt5bg2cs" path="res://ART/Sprites/MC/OverWorldMCAnimation/Down/sprite_02.png" id="4_u1c27"]
+[ext_resource type="Texture2D" uid="uid://f7lk222j4oe5" path="res://ART/Sprites/MC/OverWorldMCAnimation/Left/sprite_06.png" id="5_op7ga"]
+[ext_resource type="Texture2D" uid="uid://dylsnbajf7qo3" path="res://ART/Sprites/MC/OverWorldMCAnimation/Left/sprite_07.png" id="6_q13i1"]
+[ext_resource type="Texture2D" uid="uid://6c3slitl65uv" path="res://ART/Sprites/MC/OverWorldMCAnimation/Left/sprite_08.png" id="7_pylmc"]
+[ext_resource type="Texture2D" uid="uid://k3clseqeop0p" path="res://ART/Sprites/MC/OverWorldMCAnimation/Right/sprite_03.png" id="8_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://bip5xl7vpqoqq" path="res://ART/Sprites/MC/OverWorldMCAnimation/Right/sprite_04.png" id="9_5tmop"]
+[ext_resource type="Texture2D" uid="uid://we3n1ujvxrgn" path="res://ART/Sprites/MC/OverWorldMCAnimation/Right/sprite_05.png" id="10_7ahtn"]
+[ext_resource type="Texture2D" uid="uid://b7hmup2sw0nqv" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_09.png" id="11_7lmhl"]
+[ext_resource type="Texture2D" uid="uid://cy2hlv6f3jlds" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_10.png" id="12_dx0e4"]
+[ext_resource type="Texture2D" uid="uid://chix0l6avn0v5" path="res://ART/Sprites/MC/OverWorldMCAnimation/Up/sprite_11.png" id="13_jm5j8"]
+[ext_resource type="Script" uid="uid://byvi4l6gcp8nu" path="res://scene/camera/camera_2d.gd" id="14_bwjto"]
+[ext_resource type="Texture2D" uid="uid://biykapv3wkbna" path="res://ART/Sprites/MC/OverWorldMCAnimation/Death/death.png" id="14_jxknt"]
+[ext_resource type="PackedScene" uid="uid://bf4vmbtn5o3tt" path="res://Cursor.tscn" id="15_3t26f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7hik5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bwjto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_606se")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bwjto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u1c27")
+}],
+"loop": true,
+"name": &"DownWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_op7ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_q13i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_op7ga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pylmc")
+}],
+"loop": true,
+"name": &"LeftWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pbfsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7ahtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pbfsw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5tmop")
+}],
+"loop": true,
+"name": &"RightWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_7lmhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_dx0e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7lmhl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_jm5j8")
+}],
+"loop": true,
+"name": &"UpWalk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_jxknt")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtqh7"]
+size = Vector2(12, 29)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(64, 55)
+script = ExtResource("1_urp6f")
+speed = 100
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7hik5")
+animation = &"DownWalk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
+shape = SubResource("RectangleShape2D_qtqh7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 1200
+limit_bottom = 600
+limit_smoothed = true
+script = ExtResource("14_bwjto")
+target = NodePath("..")
+
+[node name="Node" parent="." instance=ExtResource("15_3t26f")]
+
+[node name="TimerDeath" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerDeath" to="." method="_on_timer_death_timeout"]

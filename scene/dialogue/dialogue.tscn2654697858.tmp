@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6fjnqiacddbx"]
+
+[ext_resource type="Texture2D" uid="uid://bykv0u0rbul3p" path="res://ART/DialogBox/dialogbox.png" id="1_kp46k"]
+[ext_resource type="Script" uid="uid://3vm32gkklya0" path="res://scene/dialogue/dialogue.gd" id="1_oi3j2"]
+[ext_resource type="FontFile" uid="uid://ba8xjii1dt2kh" path="res://ART/DialogBox/Font/Grenze_Gotisch/GrenzeGotisch-VariableFont_wght.ttf" id="3_ajbxn"]
+
+[node name="dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 489.0
+offset_bottom = 312.0
+script = ExtResource("1_oi3j2")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_right = 112.0
+offset_bottom = 60.0
+texture = ExtResource("1_kp46k")
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 209.81818
+offset_bottom = 72.0
+scale = Vector2(0.13, 0.13)
+theme_override_fonts/normal_font = ExtResource("3_ajbxn")
+theme_override_font_sizes/normal_font_size = 44
+text = "Name"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 3.0000005
+offset_top = 15.000001
+offset_right = 584.8181
+offset_bottom = 251.36362
+scale = Vector2(0.165, 0.165)
+theme_override_fonts/normal_font = ExtResource("3_ajbxn")
+theme_override_font_sizes/normal_font_size = 44
+text = "Death is an Oportunity"
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

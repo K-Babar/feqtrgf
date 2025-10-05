@@ -1,0 +1,10 @@
+res://follower_smarter.gd
+res://scene/character/npc/npc.gd
+res://scene/character/player/player.gd
+res://scene/dialogue/dialogue.gd
+res://scene/environement/inventory.gd
+res://scene/environement/inventory_ui.gd
+res://scene/levels/crypt/porte_cript.gd
+res://scene/character/npc/follower.gd
+res://enemy.gd
+res://scene/main.tscn

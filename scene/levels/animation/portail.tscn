@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr4jim3mut16h"]
+
+[ext_resource type="Script" uid="uid://cb4pxd8kwd0g3" path="res://scene/levels/animation/portail.gd" id="1_v80cs"]
+[ext_resource type="Texture2D" uid="uid://cotogr5ldkjhl" path="res://ART/Props/sprite_Gate1.png" id="2_aiiei"]
+[ext_resource type="Texture2D" uid="uid://biqy8flmklavc" path="res://ART/Props/sprite_Gate0.png" id="3_epe6x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wiavc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aiiei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_epe6x")
+}],
+"loop": false,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_epe6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_aiiei")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drc6s"]
+size = Vector2(135, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v80cs"]
+size = Vector2(132, 60)
+
+[node name="Portail" type="Area2D"]
+position = Vector2(182, 107)
+script = ExtResource("1_v80cs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wiavc")
+animation = &"close"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_drc6s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionGate" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_v80cs")

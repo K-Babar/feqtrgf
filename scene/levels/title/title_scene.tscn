@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdg4tsa7gd0di"]
+
+[ext_resource type="Script" uid="uid://bqvy7ocmdgtp8" path="res://scene/levels/title/title_scene.gd" id="1_wkkv4"]
+[ext_resource type="Texture2D" uid="uid://c01rh8y55tkcy" path="res://ART/Props/BG/sprite_0.png" id="2_176dl"]
+[ext_resource type="FontFile" uid="uid://ba8xjii1dt2kh" path="res://ART/DialogBox/Font/Grenze_Gotisch/GrenzeGotisch-VariableFont_wght.ttf" id="3_8vtwa"]
+
+[node name="TitleScene" type="Node2D"]
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_wkkv4")
+
+[node name="Sprite0" type="Sprite2D" parent="."]
+position = Vector2(59800008, 35400000)
+scale = Vector2(99798.9, 118833.35)
+texture = ExtResource("2_176dl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_priority = 1
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+top_level = true
+anchors_preset = -1
+anchor_left = -0.013333334
+anchor_top = -0.31166667
+anchor_right = 0.20666666
+anchor_bottom = -0.24166666
+offset_left = 741.0
+offset_top = 331.0
+offset_right = 836.0
+offset_bottom = 358.0
+theme_override_fonts/font = ExtResource("3_8vtwa")
+theme_override_font_sizes/font_size = 46
+text = "THE SERENE GLADE"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+top_level = true
+offset_left = 562.0
+offset_top = 304.0
+offset_right = 643.0
+offset_bottom = 353.0
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 1126.0
+offset_top = 541.0
+offset_right = 1187.0
+offset_bottom = 587.0
+text = "Credit"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]

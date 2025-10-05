@@ -1,0 +1,163 @@
+[gd_scene load_steps=19 format=3 uid="uid://bjga8nqqpql2y"]
+
+[ext_resource type="Script" uid="uid://cl4lxifwtsrml" path="res://scene/levels/crypt/crypt.gd" id="1_yobqo"]
+[ext_resource type="Script" uid="uid://bxenimt2u26kf" path="res://scene/camera/canvas_layer.gd" id="2_dj26u"]
+[ext_resource type="Texture2D" uid="uid://cmc8w8oa77xp4" path="res://ART/Props/crypte/sprite_0.png" id="3_1wgsg"]
+[ext_resource type="PackedScene" uid="uid://7q4tqo0mblic" path="res://scene/character/player/player.tscn" id="5_7l7f8"]
+[ext_resource type="Texture2D" uid="uid://bswf4i4ep7jy2" path="res://ART/Props/crypte/lake/sprite_0.png" id="6_3qa0k"]
+[ext_resource type="Texture2D" uid="uid://diklt20341vfn" path="res://ART/Props/crypte/lake/sprite_1.png" id="7_pphbs"]
+[ext_resource type="Texture2D" uid="uid://djwgw6aupcio1" path="res://ART/Props/crypte/lake/sprite_2.png" id="8_1ygvo"]
+[ext_resource type="Script" uid="uid://lavr2oxpghii" path="res://scene/levels/crypt/output_port.gd" id="9_khah1"]
+[ext_resource type="PackedScene" uid="uid://cnmyy82xbpjtj" path="res://enemy.tscn" id="10_7ckqa"]
+[ext_resource type="PackedScene" uid="uid://b08wqhlwihpsu" path="res://followersmarter.tscn" id="11_olj81"]
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_7mycd"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_272bh"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vw27"]
+_data = {
+&"RESET": SubResource("Animation_5vw27"),
+&"fade_in": SubResource("Animation_7mycd"),
+&"fade_out": SubResource("Animation_272bh")
+}
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5354r"]
+vertices = PackedVector2Array(938.59375, 74.14844, 961.3672, 451.89844, 434.35156, 240, 428.79688, 219.32031, 428.79688, 260.6797, 296.5078, 446.0703, 413.6797, 275.79688, 394.3203, 281, 339.6797, 281, 320.3203, 275.79688, 413.6797, 204.20313, 237.72656, 85.796875, 394.3203, 199, 339.6797, 199, 320.3203, 204.20313, 305.20313, 219.32031, 305.20313, 260.6797, 299.64844, 240)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1), PackedInt32Array(4, 1, 5, 6), PackedInt32Array(7, 6, 5), PackedInt32Array(8, 7, 5), PackedInt32Array(9, 8, 5), PackedInt32Array(0, 3, 10), PackedInt32Array(11, 0, 10, 12), PackedInt32Array(11, 12, 13), PackedInt32Array(11, 13, 14), PackedInt32Array(11, 14, 15), PackedInt32Array(16, 9, 5), PackedInt32Array(16, 5, 11, 17), PackedInt32Array(17, 11, 15)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(226, 76, 948, 64, 972, 462, 288, 456)])
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hduv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3qa0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pphbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1ygvo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o7lt1"]
+radius = 31.0
+height = 114.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5ywv"]
+size = Vector2(122, 13)
+
+[node name="Cript" type="Node2D"]
+script = ExtResource("1_yobqo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["FadeInOut"]]
+script = ExtResource("2_dj26u")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+process_mode = 2
+root_node = NodePath("../ColorRect")
+libraries = {
+&"": SubResource("AnimationLibrary_5vw27")
+}
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_5354r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D"]
+
+[node name="Lake" type="AnimatedSprite2D" parent="NavigationRegion2D/StaticBody2D"]
+show_behind_parent = true
+position = Vector2(597, 279)
+sprite_frames = SubResource("SpriteFrames_4hduv")
+frame_progress = 0.5398639
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/StaticBody2D"]
+position = Vector2(367, 240)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o7lt1")
+
+[node name="Player" parent="." instance=ExtResource("5_7l7f8")]
+position = Vector2(597, 389)
+
+[node name="Sprite0" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(597, 279)
+texture = ExtResource("3_1wgsg")
+
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2(601, 299)
+zoom = Vector2(2, 2)
+limit_left = 297
+limit_top = 125
+limit_right = 897
+limit_bottom = 433
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="OutputPort" type="Area2D" parent="."]
+position = Vector2(598, 429)
+script = ExtResource("9_khah1")
+
+[node name="Sprite2D" type="Sprite2D" parent="OutputPort"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutputPort"]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_j5ywv")
+
+[node name="Enemy" parent="." instance=ExtResource("10_7ckqa")]
+position = Vector2(727, 382)
+
+[node name="Follower" parent="." instance=ExtResource("11_olj81")]
+position = Vector2(664, 362)
+follow_player_when_near = true
+follow_distance = 4.0
+damage_amount = 15
+speed = 30.0
+
+[connection signal="body_entered" from="OutputPort" to="OutputPort" method="_on_body_entered"]

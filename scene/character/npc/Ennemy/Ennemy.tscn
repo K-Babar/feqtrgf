@@ -1,0 +1,128 @@
+[gd_scene load_steps=9 format=3 uid="uid://clmgt5gmw677q"]
+
+[ext_resource type="Script" uid="uid://ckv446ptyy8q0" path="res://scene/character/npc/Ennemy/ennemy.gd" id="1_yxrcy"]
+[ext_resource type="Texture2D" uid="uid://dw01yhi0h1ytg" path="res://ART/Sprites/NPC/Ghoul.png" id="2_2fhnb"]
+[ext_resource type="PackedScene" uid="uid://c6fjnqiacddbx" path="res://scene/dialogue/dialogue.tscn" id="18_tgiu8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ul7y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2fhnb")
+}],
+"loop": true,
+"name": &"back_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2fhnb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2fhnb")
+}],
+"loop": true,
+"name": &"front_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2fhnb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2fhnb")
+}],
+"loop": true,
+"name": &"left_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2fhnb")
+}],
+"loop": true,
+"name": &"right_walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bc6q4"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mcvl2"]
+radius = 46.52956
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77b8b"]
+radius = 530.0009
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5we18"]
+radius = 21.023796
+
+[node name="Ennemy" type="CharacterBody2D"]
+position = Vector2(129, 31)
+script = ExtResource("1_yxrcy")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.6250019, -1.25)
+scale = Vector2(1, 0.891)
+sprite_frames = SubResource("SpriteFrames_ul7y6")
+animation = &"right_walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.6293945e-06, 0)
+shape = SubResource("CircleShape2D_bc6q4")
+
+[node name="ChatDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
+shape = SubResource("CircleShape2D_mcvl2")
+
+[node name="Proximity" type="Area2D" parent="."]
+
+[node name="CollisionShape2Dfine" type="CollisionShape2D" parent="Proximity"]
+visible = false
+shape = SubResource("CircleShape2D_77b8b")
+
+[node name="ProximityTooClose" type="Area2D" parent="."]
+
+[node name="CollisionShape2Dclose" type="CollisionShape2D" parent="ProximityTooClose"]
+shape = SubResource("CircleShape2D_5we18")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="dialogue" parent="." instance=ExtResource("18_tgiu8")]
+offset_left = -54.0
+offset_top = -106.0
+offset_right = 68.0
+offset_bottom = -59.0
+d_file = "res://dialogue/follower1dialogue.json"
+metadata/_edit_use_anchors_ = true
+
+[node name="TimerIdle" type="Timer" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
+[connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
+[connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
+[connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
+[connection signal="body_exited" from="ChatDetection" to="." method="_on_chat_detection_body_exited"]
+[connection signal="mouse_entered" from="ChatDetection" to="." method="_on_chat_detection_mouse_entered"]
+[connection signal="mouse_exited" from="ChatDetection" to="." method="_on_chat_detection_mouse_exited"]
+[connection signal="area_entered" from="Proximity" to="." method="_on_proximity_area_entered"]
+[connection signal="body_entered" from="Proximity" to="." method="_on_proximity_body_entered"]
+[connection signal="body_entered" from="ProximityTooClose" to="." method="_on_proximity_too_close_body_entered"]
+[connection signal="body_exited" from="ProximityTooClose" to="." method="_on_proximity_too_close_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="dialogue_finished" from="dialogue" to="." method="_on_dialogue_dialogue_finished"]
+[connection signal="timeout" from="TimerIdle" to="." method="_on_timer_idle_timeout"]

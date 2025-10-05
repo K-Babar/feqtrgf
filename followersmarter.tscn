@@ -1,0 +1,244 @@
+[gd_scene load_steps=25 format=3 uid="uid://b08wqhlwihpsu"]
+
+[ext_resource type="Script" uid="uid://dyuvlx53ov63g" path="res://follower_smarter.gd" id="1_mk38w"]
+[ext_resource type="Texture2D" uid="uid://b7jlunphmp7rv" path="res://ART/Sprites/Follower/follower1/back/sprite_12.png" id="2_xv4ud"]
+[ext_resource type="Texture2D" uid="uid://hcs31ubcos45" path="res://ART/Sprites/Follower/follower1/back/sprite_14.png" id="3_h44rk"]
+[ext_resource type="Texture2D" uid="uid://bt77357wpt13a" path="res://ART/Sprites/Follower/follower1/back/sprite_15.png" id="4_d5ebj"]
+[ext_resource type="Texture2D" uid="uid://dj88kjvhdd7wd" path="res://ART/Sprites/Follower/follower1/front/sprite_04.png" id="5_d17nw"]
+[ext_resource type="Texture2D" uid="uid://csidosj646hvg" path="res://ART/Sprites/Follower/follower1/front/sprite_05.png" id="6_kndoi"]
+[ext_resource type="Texture2D" uid="uid://bv2slymmrwlvo" path="res://ART/Sprites/Follower/follower1/front/sprite_06.png" id="7_cncmf"]
+[ext_resource type="Texture2D" uid="uid://cbygrvhdln3b4" path="res://ART/Sprites/Follower/follower1/front/sprite_07.png" id="8_hxrql"]
+[ext_resource type="Texture2D" uid="uid://y6l0jqblqqiy" path="res://ART/Sprites/Follower/follower1/back/sprite_13.png" id="9_b38md"]
+[ext_resource type="Texture2D" uid="uid://ks453jbew82x" path="res://ART/Sprites/Follower/follower1/right/sprite_08.png" id="10_rk2tv"]
+[ext_resource type="Texture2D" uid="uid://df8ptnfaw5fds" path="res://ART/Sprites/Follower/follower1/left/sprite_01.png" id="11_l6kh8"]
+[ext_resource type="Texture2D" uid="uid://ii5xgv4k517d" path="res://ART/Sprites/Follower/follower1/left/sprite_00.png" id="12_tfy0v"]
+[ext_resource type="Texture2D" uid="uid://cxk0hu1g0d8jb" path="res://ART/Sprites/Follower/follower1/right/sprite_09.png" id="13_k20bl"]
+[ext_resource type="Texture2D" uid="uid://clr15e7qsl4ql" path="res://ART/Sprites/Follower/follower1/left/sprite_02.png" id="14_xok4n"]
+[ext_resource type="Texture2D" uid="uid://b1ysblb5tuucw" path="res://ART/Sprites/Follower/follower1/left/sprite_03.png" id="15_j3j7b"]
+[ext_resource type="Texture2D" uid="uid://k2kwihjc8ecg" path="res://ART/Sprites/Follower/follower1/right/sprite_10.png" id="16_jemva"]
+[ext_resource type="Texture2D" uid="uid://o57xpvg6egfm" path="res://ART/Sprites/Follower/follower1/right/sprite_11.png" id="17_cd3tj"]
+[ext_resource type="PackedScene" uid="uid://c6fjnqiacddbx" path="res://scene/dialogue/dialogue.tscn" id="18_t66ub"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ul7y6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xv4ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h44rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xv4ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d5ebj")
+}],
+"loop": true,
+"name": &"back_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d17nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kndoi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d17nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cncmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d17nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hxrql")
+}],
+"loop": true,
+"name": &"front_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xv4ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b38md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rk2tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d17nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xv4ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_l6kh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tfy0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_b38md")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d17nw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kndoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_l6kh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tfy0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k20bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kndoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rk2tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k20bl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tfy0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xok4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_tfy0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j3j7b")
+}],
+"loop": true,
+"name": &"left_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_rk2tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jemva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rk2tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_cd3tj")
+}],
+"loop": true,
+"name": &"right_walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bc6q4"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mcvl2"]
+radius = 46.52956
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_77b8b"]
+radius = 530.0009
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5we18"]
+radius = 64.412735
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mk38w"]
+radius = 24.0
+
+[node name="Follower" type="CharacterBody2D"]
+position = Vector2(129, 31)
+script = ExtResource("1_mk38w")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.9073486e-06, -1)
+scale = Vector2(1, 0.891)
+sprite_frames = SubResource("SpriteFrames_ul7y6")
+animation = &"back_walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.6293945e-06, 0)
+shape = SubResource("CircleShape2D_bc6q4")
+
+[node name="ChatDetection" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChatDetection"]
+visible = false
+shape = SubResource("CircleShape2D_mcvl2")
+
+[node name="Proximity" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2Dfine" type="CollisionShape2D" parent="Proximity"]
+visible = false
+shape = SubResource("CircleShape2D_77b8b")
+
+[node name="ProximityTooClose" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2Dclose" type="CollisionShape2D" parent="ProximityTooClose"]
+shape = SubResource("CircleShape2D_5we18")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="dialogue" parent="." instance=ExtResource("18_t66ub")]
+offset_left = -54.0
+offset_top = -106.0
+offset_right = 68.0
+offset_bottom = -59.0
+d_file = "res://dialogue/follower1dialogue.json"
+metadata/_edit_use_anchors_ = true
+
+[node name="TimerIdle" type="Timer" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_mk38w")
+
+[connection signal="dialogue_exited" from="." to="dialogue" method="_on_npc_dialogue_exited"]
+[connection signal="area_entered" from="ChatDetection" to="." method="_on_chat_detection_area_entered"]
+[connection signal="area_exited" from="ChatDetection" to="." method="_on_chat_detection_area_exited"]
+[connection signal="body_entered" from="ChatDetection" to="." method="_on_chat_detection_body_entered"]
+[connection signal="body_exited" from="ChatDetection" to="." method="_on_chat_detection_body_exited"]
+[connection signal="mouse_entered" from="ChatDetection" to="." method="_on_chat_detection_mouse_entered"]
+[connection signal="mouse_exited" from="ChatDetection" to="." method="_on_chat_detection_mouse_exited"]
+[connection signal="area_entered" from="Proximity" to="." method="_on_proximity_area_entered"]
+[connection signal="body_entered" from="Proximity" to="." method="_on_proximity_body_entered"]
+[connection signal="body_entered" from="ProximityTooClose" to="." method="_on_proximity_too_close_body_entered"]
+[connection signal="body_exited" from="ProximityTooClose" to="." method="_on_proximity_too_close_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="dialogue_finished" from="dialogue" to="." method="_on_dialogue_dialogue_finished"]
+[connection signal="timeout" from="TimerIdle" to="." method="_on_timer_idle_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
