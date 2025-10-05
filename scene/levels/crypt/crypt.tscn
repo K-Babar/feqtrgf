@@ -1027,11 +1027,6 @@ shape = SubResource("RectangleShape2D_j5ywv")
 
 [node name="Enemy" parent="." instance=ExtResource("10_xixhc")]
 position = Vector2(720, 329)
-follow_player_when_near = true
-follow_distance = 4.0
-damage_amount = 15
-damage_interval = 1.0
-speed = 30.0
 
 [node name="Follower" parent="." groups=["Ally"] instance=ExtResource("11_tt6x2")]
 position = Vector2(826, 457)
