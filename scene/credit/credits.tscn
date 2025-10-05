@@ -32,6 +32,10 @@ text = "Foley Artist : Dragonhail"
 layout_mode = 2
 text = "Dessin : Claire"
 
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Music : je sais pas j'écoutais pas en classe en faite xD"
+
 [node name="Label4" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Mention honorable au GOAT"

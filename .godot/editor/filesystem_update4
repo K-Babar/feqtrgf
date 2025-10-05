@@ -3,3 +3,11 @@ res://enemy.gd
 res://scene/character/player/player.gd
 res://scene/environement/inventory_ui.tscn
 res://scene/environement/inventory_ui.gd
+res://scene/levels/crypt/crypt.gd
+res://scene/main.gd
+res://scene/environement/sound_manager.gd
+res://scene/levels/title/title_scene.gd
+res://scene/credit/credits.tscn
+res://scene/environement/sound_manager.tscn
+res://scene/character/player/player.tscn
+res://scene/camera/canvas_layer.gd
