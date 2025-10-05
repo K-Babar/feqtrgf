@@ -14,7 +14,7 @@ func _ready():
 
 #code that i stole from the tutorial and changed
 func _process(delta):
-	Global.attack_order = self.attack_order
+	Global.attack_order = attack_order
 	if Input.is_action_just_pressed("attack_order"):
 		attack_order = true
 	if Input.is_action_just_released("attack_order"):

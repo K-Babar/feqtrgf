@@ -35,9 +35,9 @@ func _process(delta: float) -> void:
 	else:
 		label.text = ""
 
-	# --- Orientation du sprite vers la cible pour l'attaque ---
-	if target and attack_sprite and not is_ko and attack_mode:
-		_update_attack_orientation()
+	## --- Orientation du sprite vers la cible pour l'attaque ---
+	#if target and not is_ko and attack_mode:
+		#_update_attack_orientation()
 
 	# --- Animation marche/idle ---
 	if not is_ko:
@@ -48,6 +48,11 @@ func _process(delta: float) -> void:
 			_play_idle_animation(last_direction)
 
 func _physics_process(delta):
+	var Enemie = get_tree().get_nodes_in_group("TargetEnemy")
+	if Enemie == []:
+		attack_mode =false
+	else: 
+		attack_mode =true
 	if not is_ko and target and is_following:
 		if not is_instance_valid(target):
 			targeting()
@@ -74,8 +79,9 @@ func _physics_process(delta):
 func targeting():
 	if attack_mode:
 		# Mode attaque → chercher uniquement les ennemis
-		var enemies = get_tree().get_nodes_in_group("Enemy")
+		var enemies = get_tree().get_nodes_in_group("TargetEnemy")
 		if enemies.size() > 0:
+			print('here')
 			target = enemies[0]
 			is_following = true
 		else:
@@ -131,7 +137,7 @@ func _on_proximity_too_close_body_entered(body: Node2D) -> void:
 		player_in_chat_zone = true
 		is_following = false
 
-	if attack_mode and body.is_in_group("Enemy"):
+	if attack_mode and body.is_in_group("TargetEnemy"):
 		is_following = false
 		target = body
 		_update_attack_orientation()
