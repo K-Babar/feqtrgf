@@ -35,12 +35,5 @@ func play_music(name: String):
 	if not sounds.has(name):
 		push_warning("music unknown: " + name)
 		return
-
 	music_player.stream = sounds[name]
-	
-	#if music_player.stream is AudioStreamOggVorbis:
-		#music_player.stream.loop = loop
-	#elif music_player.stream is AudioStreamSample:
-		#music_player.stream.loop_mode = AudioStreamSample.LOOP_FORWARD
-		
 	music_player.play()
